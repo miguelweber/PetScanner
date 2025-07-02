@@ -23,7 +23,7 @@ seus pets.
 - [ ] Tela notificando pet encontrado
 
 ## Colaboradores
-Turma 3B2
+Turma **3B2**
 
 Miguel Weber    (12300632@aluno.cotemig.com.br) [Portfólio](https://github.com/miguelweber)
 
