@@ -1,5 +1,18 @@
 # PetScanner
+O PetScanner é um aplicativo inovador desenvolvido para promover a segurança, 
+o bem-estar e a rápida identificação de animais de estimação por meio de 
+tecnologia de QR Code.
+Com ele, tutores podem acessar instantaneamente todos os dados essenciais de
+um pet apenas escaneando o QR Code presente em sua coleira.
+O sistema foi idealizado para auxiliar na identificação de animais perdidos, 
+facilitar a comunicação entre o encontrador e o tutor, além de manter um
+registro organizado das informações do pet em um ambiente digital seguro,
+acessível e atualizado.
 
+A sua missão é oferecer uma solução digital eficiente, segura e acessível para
+identificação de animais de estimação, contribuindo para a redução do número de 
+animais perdidos e promovendo uma convivência mais tranquila entre tutores e 
+seus pets.
 
 ## Objetivos
 - [ ] Fazer o vídeo de demonstração
