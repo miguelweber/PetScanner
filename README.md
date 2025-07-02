@@ -11,9 +11,14 @@
 
 ## Colaboradores
 Miguel Weber    (12300632@aluno.cotemig.com.br) [Portfólio] (https://github.com/miguelweber)
+
 Lucas Gabriel   (22301232@aluno.cotemig.com.br)
+
 Matheus Arcanjo (22300759@aluno.cotemig.com.br)
+
 Maria Clara     (22301135@aluno.cotemig.com.br)
+
 Maria Luiza     (22300384@aluno.cotemig.com.br) [Portfólio] (https://github.com/malu4225)
+
 Júlia Marcussi  (22301097@aluno.cotemig.com.br)
 
