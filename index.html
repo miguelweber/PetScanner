@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste API Doação de Pets</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .section { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; }
+        .form-group { margin-bottom: 10px; }
+        label { display: block; margin-bottom: 5px; }
+        input, textarea, select { width: 100%; padding: 8px; margin-bottom: 5px; }
+        button { padding: 10px 15px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .response { background: #f5f5f5; padding: 10px; margin-top: 10px; white-space: pre-wrap; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Teste da API de Doação de Pets</h1>
+    
+    <!-- Seção de Autenticação -->
+    <div class="section">
+        <h2>Autenticação</h2>
+        
+        <div class="form-group">
+            <h3>Registrar Usuário</h3>
+            <input type="text" id="regNome" placeholder="Nome">
+            <input type="email" id="regEmail" placeholder="Email">
+            <input type="password" id="regSenha" placeholder="Senha">
+            <input type="text" id="regTelefone" placeholder="Telefone">
+            <button onclick="registrar()">Registrar</button>
+            <div id="registroResponse" class="response"></div>
+        </div>
+        
+        <div class="form-group">
+            <h3>Login</h3>
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginSenha" placeholder="Senha">
+            <button onclick="login()">Login</button>
+            <div id="loginResponse" class="response"></div>
+        </div>
+        
+        <div class="form-group">
+            <h3>Token JWT (será armazenado automaticamente após login)</h3>
+            <textarea id="jwtToken" rows="3" readonly></textarea>
+        </div>
+    </div>
+    
+    <!-- Seção de Pets -->
+    <div class="section">
+        <h2>Pets</h2>
+        
+        <div class="form-group">
+            <h3>Listar Todos os Pets</h3>
+            <button onclick="listarPets()">Listar Pets</button>
+            <div id="listarPetsResponse" class="response"></div>
+        </div>
+        
+        <div class="form-group">
+            <h3>Criar Novo Pet</h3>
+            <input type="text" id="petEspecie" placeholder="Espécie">
+            <input type="text" id="petRaca" placeholder="Raça (opcional)">
+            <input type="text" id="petCidade" placeholder="Cidade">
+            <select id="petEhAdulto">
+                <option value="true">Adulto</option>
+                <option value="false">Jovem</option>
+            </select>
+            <textarea id="petDescricao" placeholder="Descrição"></textarea>
+            <input type="email" id="petContatoEmail" placeholder="Email de contato">
+            <input type="text" id="petContatoTelefone" placeholder="Telefone de contato">
+            <label><input type="checkbox" id="petReceberTextos"> Receber textos</label>
+            <label><input type="checkbox" id="petReceberLigacoes"> Receber ligações</label>
+            <button onclick="criarPet()">Criar Pet</button>
+            <div id="criarPetResponse" class="response"></div>
+        </div>
+        
+        <div class="form-group">
+            <h3>Buscar Pet por ID</h3>
+            <input type="number" id="petId" placeholder="ID do Pet">
+            <button onclick="buscarPet()">Buscar Pet</button>
+            <div id="buscarPetResponse" class="response"></div>
+        </div>
+        
+        <div class="form-group">
+            <h3>Listar Meus Pets</h3>
+            <button onclick="listarMeusPets()">Listar Meus Pets</button>
+            <div id="listarMeusPetsResponse" class="response"></div>
+        </div>
+        
+        <div class="form-group">
+            <h3>Deletar Pet</h3>
+            <input type="number" id="deletarPetId" placeholder="ID do Pet a deletar">
+            <button onclick="deletarPet()">Deletar Pet</button>
+            <div id="deletarPetResponse" class="response"></div>
+        </div>
+    </div>
+    
+    <!-- Seção de Usuário -->
+    <div class="section">
+        <h2>Perfil do Usuário</h2>
+        
+        <div class="form-group">
+            <h3>Obter Perfil</h3>
+            <button onclick="obterPerfil()">Obter Perfil</button>
+            <div id="obterPerfilResponse" class="response"></div>
+        </div>
+        
+        <div class="form-group">
+            <h3>Atualizar Perfil</h3>
+            <input type="text" id="perfilNome" placeholder="Nome">
+            <input type="text" id="perfilTelefone" placeholder="Telefone">
+            <label><input type="checkbox" id="perfilReceberEmails"> Receber emails</label>
+            <label><input type="checkbox" id="perfilReceberSms"> Receber SMS</label>
+            <label><input type="checkbox" id="perfilReceberLigacoes"> Receber ligações</label>
+            <button onclick="atualizarPerfil()">Atualizar Perfil</button>
+            <div id="atualizarPerfilResponse" class="response"></div>
+        </div>
+        
+        <div class="form-group">
+            <h3>Alterar Senha</h3>
+            <input type="password" id="senhaAtual" placeholder="Senha atual">
+            <input type="password" id="novaSenha" placeholder="Nova senha">
+            <button onclick="alterarSenha()">Alterar Senha</button>
+            <div id="alterarSenhaResponse" class="response"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3000/api';
+        let jwtToken = '';
+        
+        // Funções de Autenticação
+        async function registrar() {
+            const nome = document.getElementById('regNome').value;
+            const email = document.getElementById('regEmail').value;
+            const senha = document.getElementById('regSenha').value;
+            const telefone = document.getElementById('regTelefone').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/auth/registrar`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nome, email, senha, telefone })
+                });
+                
+                const data = await response.json();
+                document.getElementById('registroResponse').innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('registroResponse').innerHTML = 'Erro: ' + error.message;
+            }
+        }
+        
+        async function login() {
+            const email = document.getElementById('loginEmail').value;
+            const senha = document.getElementById('loginSenha').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, senha })
+                });
+                
+                const data = await response.json();
+                document.getElementById('loginResponse').innerHTML = JSON.stringify(data, null, 2);
+                
+                if (data.token) {
+                    jwtToken = data.token;
+                    document.getElementById('jwtToken').value = jwtToken;
+                    localStorage.setItem('jwtToken', jwtToken);
+                }
+            } catch (error) {
+                document.getElementById('loginResponse').innerHTML = 'Erro: ' + error.message;
+            }
+        }
+        
+        // Funções de Pets
+        async function listarPets() {
+            try {
+                const response = await fetch(`${API_BASE}/pets`);
+                const data = await response.json();
+                document.getElementById('listarPetsResponse').innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('listarPetsResponse').innerHTML = 'Erro: ' + error.message;
+            }
+        }
+        
+        async function criarPet() {
+            if (!jwtToken) {
+                alert('Faça login primeiro!');
+                return;
+            }
+            
+            const especie = document.getElementById('petEspecie').value;
+            const raca = document.getElementById('petRaca').value;
+            const cidade = document.getElementById('petCidade').value;
+            const eh_adulto = document.getElementById('petEhAdulto').value === 'true';
+            const descricao = document.getElementById('petDescricao').value;
+            const contato_email = document.getElementById('petContatoEmail').value;
+            const contato_telefone = document.getElementById('petContatoTelefone').value;
+            const receber_textos = document.getElementById('petReceberTextos').checked;
+            const receber_ligacoes = document.getElementById('petReceberLigacoes').checked;
+            
+            try {
+                const response = await fetch(`${API_BASE}/pets`, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${jwtToken}`
+                    },
+                    body: JSON.stringify({
+                        especie, raca, cidade, eh_adulto, descricao,
+                        contato_email, contato_telefone, receber_textos, receber_ligacoes
+                    })
+                });
+                
+                const data = await response.json();
+                document.getElementById('criarPetResponse').innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('criarPetResponse').innerHTML = 'Erro: ' + error.message;
+            }
+        }
+        
+        async function buscarPet() {
+            const id = document.getElementById('petId').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/pets/${id}`);
+                const data = await response.json();
+                document.getElementById('buscarPetResponse').innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('buscarPetResponse').innerHTML = 'Erro: ' + error.message;
+            }
+        }
+        
+        async function listarMeusPets() {
+            if (!jwtToken) {
+                alert('Faça login primeiro!');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/pets/usuario/meus-pets`, {
+                    headers: { 'Authorization': `Bearer ${jwtToken}` }
+                });
+                const data = await response.json();
+                document.getElementById('listarMeusPetsResponse').innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('listarMeusPetsResponse').innerHTML = 'Erro: ' + error.message;
+            }
+        }
+        
+        async function deletarPet() {
+            if (!jwtToken) {
+                alert('Faça login primeiro!');
+                return;
+            }
+            
+            const id = document.getElementById('deletarPetId').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/pets/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${jwtToken}` }
+                });
+                const data = await response.json();
+                document.getElementById('deletarPetResponse').innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('deletarPetResponse').innerHTML = 'Erro: ' + error.message;
+            }
+        }
+        
+        // Funções de Perfil
+        async function obterPerfil() {
+            if (!jwtToken) {
+                alert('Faça login primeiro!');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/usuarios/perfil`, {
+                    headers: { 'Authorization': `Bearer ${jwtToken}` }
+                });
+                const data = await response.json();
+                document.getElementById('obterPerfilResponse').innerHTML = JSON.stringify(data, null, 2);
+                
+                // Preencher formulário de edição
+                document.getElementById('perfilNome').value = data.nome || '';
+                document.getElementById('perfilTelefone').value = data.telefone || '';
+                document.getElementById('perfilReceberEmails').checked = data.receber_emails || false;
+                document.getElementById('perfilReceberSms').checked = data.receber_sms || false;
+                document.getElementById('perfilReceberLigacoes').checked = data.receber_ligacoes || false;
+            } catch (error) {
+                document.getElementById('obterPerfilResponse').innerHTML = 'Erro: ' + error.message;
+            }
+        }
+        
+        async function atualizarPerfil() {
+            if (!jwtToken) {
+                alert('Faça login primeiro!');
+                return;
+            }
+            
+            const nome = document.getElementById('perfilNome').value;
+            const telefone = document.getElementById('perfilTelefone').value;
+            const receber_emails = document.getElementById('perfilReceberEmails').checked;
+            const receber_sms = document.getElementById('perfilReceberSms').checked;
+            const receber_ligacoes = document.getElementById('perfilReceberLigacoes').checked;
+            
+            try {
+                const response = await fetch(`${API_BASE}/usuarios/perfil`, {
+                    method: 'PUT',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${jwtToken}`
+                    },
+                    body: JSON.stringify({ nome, telefone, receber_emails, receber_sms, receber_ligacoes })
+                });
+                const data = await response.json();
+                document.getElementById('atualizarPerfilResponse').innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('atualizarPerfilResponse').innerHTML = 'Erro: ' + error.message;
+            }
+        }
+        
+        async function alterarSenha() {
+            if (!jwtToken) {
+                alert('Faça login primeiro!');
+                return;
+            }
+            
+            const senha_atual = document.getElementById('senhaAtual').value;
+            const nova_senha = document.getElementById('novaSenha').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/usuarios/senha`, {
+                    method: 'PUT',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${jwtToken}`
+                    },
+                    body: JSON.stringify({ senha_atual, nova_senha })
+                });
+                const data = await response.json();
+                document.getElementById('alterarSenhaResponse').innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('alterarSenhaResponse').innerHTML = 'Erro: ' + error.message;
+            }
+        }
+        
+        // Verificar se há token salvo ao carregar a página
+        window.onload = function() {
+            const savedToken = localStorage.getItem('jwtToken');
+            if (savedToken) {
+                jwtToken = savedToken;
+                document.getElementById('jwtToken').value = jwtToken;
+            }
+        };
+    </script>
+</body>
+</html>
