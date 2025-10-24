@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+composer update
+npm install
+
+cp .env.example .env
+php artisan key:generate
+php artisan db:wipe
+php artisan migrate
+php artisan db:seed
+php artisan storage:link
+
+echo App inicializado com sucesso!
+echo Foi usado o .env.example, se for usar na produção edite o .env.
