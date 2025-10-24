@@ -11,7 +11,15 @@
 
 O **PetScanner** é uma plataforma moderna e intuitiva para conectar pets que precisam de um lar com famílias que desejam adotar. Desenvolvida com Laravel, a plataforma oferece uma experiência única tanto para quem quer adotar quanto para quem precisa encontrar um lar para seu pet.
 
-## 👨💻 Desenvolvedor
+## Autores
+Turma **3B2**
+
+- Miguel Weber      (12300632@aluno.cotemig.com.br) [Portfólio](https://github.com/miguelweber)
+- Matheus Arcanjo   (22300759@aluno.cotemig.com.br)
+- Maria Luiza Penna (22300384@aluno.cotemig.com.br)
+- Maria Clara       (22301135@aluno.cotemig.com.br)
+- Júlia Marcussi  (22301097@aluno.cotemig.com.br)
+- Lucas Gabriel   (22301232@aluno.cotemig.com.br)
 
 ## Características Principais
 
