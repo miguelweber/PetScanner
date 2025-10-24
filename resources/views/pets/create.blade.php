@@ -63,7 +63,7 @@
                             </div>
                             <input type="text" id="name" name="name" value="{{ old('name') }}" required
                                    class="input pl-12 text-lg @error('name') border-red-500 ring-red-200 @enderror"
-                                   placeholder="Ex: Buddy, Luna, Max...">
+                                   placeholder="Ex: Bob, Chico, Duque...">
                         </div>
                         @error('name')
                             <p class="mt-2 text-sm text-red-600 flex items-center">
@@ -110,7 +110,7 @@
                             </div>
                             <input type="text" id="breed" name="breed" value="{{ old('breed') }}"
                                    class="input pl-12 text-lg @error('breed') border-red-500 ring-red-200 @enderror"
-                                   placeholder="Ex: Labrador, Persa, SRD (Sem Raça Definida)...">
+                                   placeholder="Ex: Labrador, Persa, ...">
                         </div>
                         @error('breed')
                             <p class="mt-2 text-sm text-red-600 flex items-center">
