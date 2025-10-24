@@ -14,16 +14,16 @@ O **PetScanner** é uma plataforma moderna e intuitiva para conectar pets que pr
 ## Autores
 Turma **3B2**
 
-- Miguel Weber      (12300632@aluno.cotemig.com.br) [Portfólio](https://github.com/miguelweber)
-- Matheus Arcanjo   (22300759@aluno.cotemig.com.br)
+- Miguel Weber (12300632@aluno.cotemig.com.br) [Portfólio](https://github.com/miguelweber)
+- Matheus Arcanjo (22300759@aluno.cotemig.com.br)
 - Maria Luiza Penna (22300384@aluno.cotemig.com.br)
-- Maria Clara       (22301135@aluno.cotemig.com.br)
-- Júlia Marcussi  (22301097@aluno.cotemig.com.br)
-- Lucas Gabriel   (22301232@aluno.cotemig.com.br)
+- Maria Clara (22301135@aluno.cotemig.com.br)
+- Júlia Marcussi (22301097@aluno.cotemig.com.br)
+- Lucas Gabriel (22301232@aluno.cotemig.com.br)
 
 ## Características Principais
 
-### Funcionalidades
+### ⚙️ Funcionalidades
 - **Sistema de autenticação** completo com registro e login
 - **Upload múltiplo de fotos** para cada pet (até 5 imagens)
 - **Geolocalização automática** via IP para priorizar pets locais
@@ -83,7 +83,7 @@ Turma **3B2**
 - **Controles de moderação**
 - **Configurações do sistema**
 
-## Instalação e Configuração
+## 🔧 Instalação e Configuração
 
 1. **Instale as dependências**
 ```bash
@@ -109,6 +109,9 @@ cd PetScanner
 ./run
 ```
 
+
+
 --
+
 Desenvolvido com ❤️ para ajudar pets a encontrarem um lar.
 
