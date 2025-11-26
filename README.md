@@ -21,69 +21,32 @@ Turma **3B2**
 - Júlia Marcussi (22301097@aluno.cotemig.com.br)
 - Lucas Gabriel (22301232@aluno.cotemig.com.br)
 
-## Características Principais
+## Funcionalidades
 
-### ⚙️ Funcionalidades
-- **Sistema de autenticação** completo com registro e login
-- **Upload múltiplo de fotos** para cada pet (até 5 imagens)
-- **Geolocalização automática** via IP para priorizar pets locais
-- **Sistema de busca avançada** por espécie, cidade e palavras-chave
-- **Painel administrativo** para moderação de conteúdo
-- **Perfis de usuário** com gerenciamento de pets
-- **Sistema de contato** via email e WhatsApp
-- **Galeria de fotos** com navegação por teclado
+| Nº | Funcionalidade | Status |
+|----|----------------|--------|
+| 1  | Autenticação de Usuário | ✅ |
+| 2  | Upload múltiplo de fotos de pets | ✅ |
+| 3  | Geolocalização automática via IP | ✅ |
+| 4  | Busca avançada de pets | ✅ |
+| 5  | Painel administrativo | ✅ |
+| 6  | Perfis de usuário | ✅ |
+| 7  | Sistema de contato (e-mail/WhatsApp) | ✅ |
+| 8  | Galeria navegável por teclado | ✅ |
+| 9  | Validação robusta de dados | ✅ |
+| 10 | Proteção CSRF | ✅ |
+| 11 | Sanitização de uploads de imagem | ✅ |
+| 12 | Controle de acesso baseado em roles | ✅ |
+| 13 | Conformidade com a LGPD | ✅ |
+| 14 | Formulário multi-step com indicador de progresso | ✅ |
+| 15 | Upload via drag-and-drop | ✅ |
+| 16 | Validação em tempo real | ✅ |
+| 17 | Salvamento automático no localStorage | ✅ |
+| 18 | Estatísticas animadas na homepage | ✅ |
+| 19 | Cards modernos na homepage | ✅ |
+| 20 | Página de detalhes do pet | ✅ |
 
-### 🛡️ Segurança e Privacidade
-- **Validação robusta** de dados
-- **Proteção CSRF** em todos os formulários
-- **Sanitização de uploads** de imagem
-- **Conformidade com LGPD** através de funcionalidades de edição/exclusão
-- **Controle de acesso** baseado em roles
-
-## 🚀 Tecnologias Utilizadas
-
-- **Backend**: Laravel
-- **Frontend**: TailwindCSS + JavaScript Vanilla
-- **Database**: SQLite (desenvolvimento) / MySQL (produção)
-- **Fontes**: Poppins (Google Fonts)
-- **Icones**: Font Awesome 6.5
-- **Processamento de imagens**: Intervention Image
-- **Geolocalização**: IP-API.com
-
-## 🎯 Páginas Principais
-
-### 🏠 Homepage
-- **Hero section** com busca avançada
-- **Grid de pets** com cards modernos
-- **Estatísticas animadas** da plataforma
-- **Call-to-action** para cadastro
-
-### 🐕 Detalhes do Pet
-- **Galeria de fotos** com thumbnails
-- **Informações completas** do pet
-- **Botões de contato** (email/WhatsApp)
-- **Pets similares** na mesma cidade
-- **Compartilhamento social**
-
-### 📝 Cadastro de Pet
-- **Formulário em etapas** com indicador de progresso
-- **Upload drag-and-drop** de múltiplas fotos
-- **Validação em tempo real**
-- **Salvamento automático** em localStorage
-
-### 🔐 Autenticação
-- **Login/Registro** com design moderno
-- **Validação de senha** com indicador de força
-- **Opções de login social** (preparado para Google/Facebook)
-- **Recuperação de senha**
-
-### 👑 Painel Admin
-- **Dashboard** com estatísticas em tempo real
-- **Gerenciamento de pets** com ações em lote
-- **Controles de moderação**
-- **Configurações do sistema**
-
-## 🔧 Instalação e Configuração
+## Instalação e Configuração
 
 1. **Instale as dependências**
 ```bash
