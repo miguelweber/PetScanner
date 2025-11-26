@@ -22,7 +22,7 @@ class PetController extends Controller
         $userCity = null;
         $userState = null;
         $userRegion = null;
-        
+
         if (!$request->filled('city')) {
             try {
                 $ip = $request->ip() === '127.0.0.1' ? '' : $request->ip();
@@ -105,7 +105,7 @@ class PetController extends Controller
             foreach ($request->file('photos') as $index => $photo) {
                 if ($photo->isValid()) {
                     $path = $photo->store('pets', 'public');
-                    
+
                     // Copy to public directory for Windows compatibility
                     $sourcePath = storage_path('app/public/' . $path);
                     $publicPath = public_path('storage/' . $path);
@@ -113,7 +113,7 @@ class PetController extends Controller
                         mkdir(dirname($publicPath), 0755, true);
                     }
                     copy($sourcePath, $publicPath);
-                    
+
                     PetPhoto::create([
                         'pet_id' => $pet->id,
                         'path' => $path,
@@ -164,7 +164,7 @@ class PetController extends Controller
             foreach ($request->file('photos') as $index => $photo) {
                 if ($photo->isValid()) {
                     $path = $photo->store('pets', 'public');
-                    
+
                     // Copy to public directory for Windows compatibility
                     $sourcePath = storage_path('app/public/' . $path);
                     $publicPath = public_path('storage/' . $path);
@@ -172,7 +172,7 @@ class PetController extends Controller
                         mkdir(dirname($publicPath), 0755, true);
                     }
                     copy($sourcePath, $publicPath);
-                    
+
                     PetPhoto::create([
                         'pet_id' => $pet->id,
                         'path' => $path,
