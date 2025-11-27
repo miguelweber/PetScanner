@@ -167,9 +167,9 @@
                            class="h-5 w-5 text-secondary-600 focus:ring-secondary-500 border-gray-300 rounded mt-1 mr-3">
                     <div class="text-gray-700">
                         <span class="font-medium">Eu concordo com os</span>
-                        <a href="#" class="text-secondary-600 hover:text-secondary-700 font-semibold mx-1">Termos de Uso</a>
+                        <a href="{{ route('terms') }}" class="text-secondary-600 hover:text-secondary-700 font-semibold mx-1">Termos de Uso</a>
                         <span>e</span>
-                        <a href="#" class="text-secondary-600 hover:text-secondary-700 font-semibold mx-1">Política de Privacidade</a>
+                        <a href="{{ route('privacy') }}" class="text-secondary-600 hover:text-secondary-700 font-semibold mx-1">Política de Privacidade</a>
                         <p class="text-sm text-gray-500 mt-1">Ao criar uma conta, você concorda em receber e-mails sobre pets disponíveis para adoção.</p>
                     </div>
                 </label>

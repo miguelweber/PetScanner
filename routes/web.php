@@ -44,3 +44,12 @@ Route::get('/storage/{path}', function ($path) {
     }
     abort(404);
 })->where('path', '.*');
+
+// Termos de uso
+Route::get('/termos-de-uso', function () {
+    return view('legal.terms');
+})->name('terms');
+
+Route::get('/politica-de-privacidade', function () {
+    return view('legal.privacy');
+})->name('privacy');
