@@ -16,26 +16,37 @@ class PetController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
+    private function getLocalizacao(Request $request)
+    {
+        $cidade = null;
+        $estado = null;
+        $estadoSigla = null;
+
+        try {
+            $ip = $request->ip() === '127.0.0.1' ? '' : $request->ip();
+            $response = file_get_contents("http://ip-api.com/json/{$ip}?fields=city,regionName,region");
+            $data = json_decode($response, true);
+            if ($data && isset($data['city'])) {
+                $cidade = $data['city'];
+                $estado = $data['regionName'] ?? null;
+                $estadoSigla = $data['region'] ?? null;
+            }
+        } catch (\Exception $e) {
+            // Ignorar erro de geolocalização
+        }
+        return [ 'cidade' => $cidade, 'estado' => $estado, 'estadoSigla' => $estadoSigla ];
+    }
+
     public function index(Request $request)
     {
-        // Detectar localização por IP se não houver filtro
         $userCity = null;
-        $userState = null;
         $userRegion = null;
-
-        if (!$request->filled('city')) {
-            try {
-                $ip = $request->ip() === '127.0.0.1' ? '' : $request->ip();
-                $response = file_get_contents("http://ip-api.com/json/{$ip}?fields=city,regionName,region");
-                $data = json_decode($response, true);
-                if ($data && isset($data['city'])) {
-                    $userCity = $data['city'];
-                    $userState = $data['regionName'] ?? null;
-                    $userRegion = $data['region'] ?? null;
-                }
-            } catch (\Exception $e) {
-                // Ignorar erro de geolocalização
-            }
+        $userState = null;
+        if (!$request->file('city')) {
+            $localizacao = $this->getLocalizacao($request);
+            $userCity = $localizacao['cidade'];
+            $userRegion = $localizacao['estadoSigla'];
+            $userState = $localizacao['estado'];
         }
 
         $query = Pet::active()->with(['user', 'photos'])->whereHas('user', function($q) {
@@ -71,9 +82,13 @@ class PetController extends Controller
         return view('pets.index', compact('pets', 'species', 'cities', 'userCity', 'userState', 'userRegion'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('pets.create');
+        $localizacao = $this->getLocalizacao($request);
+        $cidade = $localizacao['cidade'];
+        $estado = $localizacao['estado'];
+        $estadoSigla = $localizacao['estadoSigla'];
+        return view('pets.create', compact('cidade', 'estado', 'estadoSigla'));
     }
 
     public function store(Request $request)

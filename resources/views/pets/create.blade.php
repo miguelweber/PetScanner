@@ -16,7 +16,7 @@
             <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 Preencha as informações abaixo para ajudar seu pet a encontrar um novo lar cheio de amor 🐾
             </p>
-            
+
             <!-- Progress indicator -->
             <div class="flex items-center justify-center space-x-4 mt-8">
                 <div class="flex items-center">
@@ -38,7 +38,7 @@
 
         <form method="POST" action="{{ route('pets.store') }}" enctype="multipart/form-data" class="space-y-12" id="pet-form">
             @csrf
-            
+
             <!-- Enhanced Pet Information -->
             <div class="card p-8 animate-fade-in">
                 <div class="flex items-center mb-8">
@@ -50,7 +50,7 @@
                         <p class="text-gray-600">Conte-nos sobre seu amiguinho</p>
                     </div>
                 </div>
-            
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Enhanced Name -->
                     <div class="space-y-2">
@@ -185,7 +185,7 @@
                         <p class="text-gray-600">Onde o pet está localizado?</p>
                     </div>
                 </div>
-            
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Enhanced City -->
                     <div class="space-y-2">
@@ -196,7 +196,7 @@
                             <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                 <i class="fas fa-city text-gray-400"></i>
                             </div>
-                            <input type="text" id="city" name="city" value="{{ old('city') }}" required
+                            <input type="text" id="city" name="city" value="{{ $cidade ?? '' }}" required
                                    class="input pl-12 text-lg @error('city') border-red-500 ring-red-200 @enderror"
                                    placeholder="Ex: São Paulo, Rio de Janeiro...">
                         </div>
@@ -219,33 +219,33 @@
                             <select id="state" name="state" required
                                     class="input pl-12 text-lg @error('state') border-red-500 ring-red-200 @enderror">
                                 <option value="">Selecione o estado</option>
-                                <option value="AC" {{ old('state') == 'AC' ? 'selected' : '' }}>Acre</option>
-                                <option value="AL" {{ old('state') == 'AL' ? 'selected' : '' }}>Alagoas</option>
-                                <option value="AP" {{ old('state') == 'AP' ? 'selected' : '' }}>Amapá</option>
-                                <option value="AM" {{ old('state') == 'AM' ? 'selected' : '' }}>Amazonas</option>
-                                <option value="BA" {{ old('state') == 'BA' ? 'selected' : '' }}>Bahia</option>
-                                <option value="CE" {{ old('state') == 'CE' ? 'selected' : '' }}>Ceará</option>
-                                <option value="DF" {{ old('state') == 'DF' ? 'selected' : '' }}>Distrito Federal</option>
-                                <option value="ES" {{ old('state') == 'ES' ? 'selected' : '' }}>Espírito Santo</option>
-                                <option value="GO" {{ old('state') == 'GO' ? 'selected' : '' }}>Goiás</option>
-                                <option value="MA" {{ old('state') == 'MA' ? 'selected' : '' }}>Maranhão</option>
-                                <option value="MT" {{ old('state') == 'MT' ? 'selected' : '' }}>Mato Grosso</option>
-                                <option value="MS" {{ old('state') == 'MS' ? 'selected' : '' }}>Mato Grosso do Sul</option>
-                                <option value="MG" {{ old('state') == 'MG' ? 'selected' : '' }}>Minas Gerais</option>
-                                <option value="PA" {{ old('state') == 'PA' ? 'selected' : '' }}>Pará</option>
-                                <option value="PB" {{ old('state') == 'PB' ? 'selected' : '' }}>Paraíba</option>
-                                <option value="PR" {{ old('state') == 'PR' ? 'selected' : '' }}>Paraná</option>
-                                <option value="PE" {{ old('state') == 'PE' ? 'selected' : '' }}>Pernambuco</option>
-                                <option value="PI" {{ old('state') == 'PI' ? 'selected' : '' }}>Piauí</option>
-                                <option value="RJ" {{ old('state') == 'RJ' ? 'selected' : '' }}>Rio de Janeiro</option>
-                                <option value="RN" {{ old('state') == 'RN' ? 'selected' : '' }}>Rio Grande do Norte</option>
-                                <option value="RS" {{ old('state') == 'RS' ? 'selected' : '' }}>Rio Grande do Sul</option>
-                                <option value="RO" {{ old('state') == 'RO' ? 'selected' : '' }}>Rondônia</option>
-                                <option value="RR" {{ old('state') == 'RR' ? 'selected' : '' }}>Roraima</option>
-                                <option value="SC" {{ old('state') == 'SC' ? 'selected' : '' }}>Santa Catarina</option>
-                                <option value="SP" {{ old('state') == 'SP' ? 'selected' : '' }}>São Paulo</option>
-                                <option value="SE" {{ old('state') == 'SE' ? 'selected' : '' }}>Sergipe</option>
-                                <option value="TO" {{ old('state') == 'TO' ? 'selected' : '' }}>Tocantins</option>
+                                <option value="AC" {{ $estadoSigla === 'AC' ? 'selected' : '' }}>Acre</option>
+                                <option value="AL" {{ $estadoSigla === 'AL' ? 'selected' : '' }}>Alagoas</option>
+                                <option value="AP" {{ $estadoSigla === 'AP' ? 'selected' : '' }}>Amapá</option>
+                                <option value="AM" {{ $estadoSigla === 'AM' ? 'selected' : '' }}>Amazonas</option>
+                                <option value="BA" {{ $estadoSigla === 'BA' ? 'selected' : '' }}>Bahia</option>
+                                <option value="CE" {{ $estadoSigla === 'CE' ? 'selected' : '' }}>Ceará</option>
+                                <option value="DF" {{ $estadoSigla === 'DF' ? 'selected' : '' }}>Distrito Federal</option>
+                                <option value="ES" {{ $estadoSigla === 'ES' ? 'selected' : '' }}>Espírito Santo</option>
+                                <option value="GO" {{ $estadoSigla === 'GO' ? 'selected' : '' }}>Goiás</option>
+                                <option value="MA" {{ $estadoSigla === 'MA' ? 'selected' : '' }}>Maranhão</option>
+                                <option value="MT" {{ $estadoSigla === 'MT' ? 'selected' : '' }}>Mato Grosso</option>
+                                <option value="MS" {{ $estadoSigla === 'MS' ? 'selected' : '' }}>Mato Grosso do Sul</option>
+                                <option value="MG" {{ $estadoSigla === 'MG' ? 'selected' : '' }}>Minas Gerais</option>
+                                <option value="PA" {{ $estadoSigla === 'PA' ? 'selected' : '' }}>Pará</option>
+                                <option value="PB" {{ $estadoSigla === 'PB' ? 'selected' : '' }}>Paraíba</option>
+                                <option value="PR" {{ $estadoSigla === 'PR' ? 'selected' : '' }}>Paraná</option>
+                                <option value="PE" {{ $estadoSigla === 'PE' ? 'selected' : '' }}>Pernambuco</option>
+                                <option value="PI" {{ $estadoSigla === 'PI' ? 'selected' : '' }}>Piauí</option>
+                                <option value="RJ" {{ $estadoSigla === 'RJ' ? 'selected' : '' }}>Rio de Janeiro</option>
+                                <option value="RN" {{ $estadoSigla === 'RN' ? 'selected' : '' }}>Rio Grande do Norte</option>
+                                <option value="RS" {{ $estadoSigla === 'RS' ? 'selected' : '' }}>Rio Grande do Sul</option>
+                                <option value="RO" {{ $estadoSigla === 'RO' ? 'selected' : '' }}>Rondônia</option>
+                                <option value="RR" {{ $estadoSigla === 'RR' ? 'selected' : '' }}>Roraima</option>
+                                <option value="SC" {{ $estadoSigla === 'SC' ? 'selected' : '' }}>Santa Catarina</option>
+                                <option value="SP" {{ $estadoSigla === 'SP' ? 'selected' : '' }}>São Paulo</option>
+                                <option value="SE" {{ $estadoSigla === 'SE' ? 'selected' : '' }}>Sergipe</option>
+                                <option value="TO" {{ $estadoSigla === 'TO' ? 'selected' : '' }}>Tocantins</option>
                             </select>
                         </div>
                         @error('state')
@@ -268,7 +268,7 @@
                         <p class="text-gray-600">Como os interessados podem entrar em contato?</p>
                     </div>
                 </div>
-            
+
                 <div class="space-y-8">
                     <!-- Enhanced Email -->
                     <div class="space-y-2">
@@ -318,7 +318,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <label class="card p-4 cursor-pointer hover:bg-primary-50 transition-all duration-300 border-2 border-transparent hover:border-primary-200">
                                 <div class="flex items-center space-x-3">
-                                    <input type="checkbox" name="phone_accepts_calls" value="1" 
+                                    <input type="checkbox" name="phone_accepts_calls" value="1"
                                            {{ old('phone_accepts_calls') ? 'checked' : 'checked' }}
                                            class="h-5 w-5 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
                                     <div class="flex items-center">
@@ -334,7 +334,7 @@
                             </label>
                             <label class="card p-4 cursor-pointer hover:bg-accent-50 transition-all duration-300 border-2 border-transparent hover:border-accent-200">
                                 <div class="flex items-center space-x-3">
-                                    <input type="checkbox" name="phone_accepts_whatsapp" value="1" 
+                                    <input type="checkbox" name="phone_accepts_whatsapp" value="1"
                                            {{ old('phone_accepts_whatsapp') ? 'checked' : 'checked' }}
                                            class="h-5 w-5 text-accent-600 focus:ring-accent-500 border-gray-300 rounded">
                                     <div class="flex items-center">
@@ -355,18 +355,18 @@
 
             <!-- Enhanced Submit Buttons -->
             <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 pt-8">
-                <a href="{{ route('home') }}" 
+                <a href="{{ route('home') }}"
                    class="btn-secondary text-lg px-8 py-4 w-full sm:w-auto">
                     <i class="fas fa-arrow-left mr-3"></i>Cancelar
                 </a>
-                
+
                 <button type="submit" id="submit-btn"
                         class="btn-primary text-lg px-12 py-4 w-full sm:w-auto">
                     <i class="fas fa-heart mr-3"></i>Cadastrar Pet
                 </button>
             </div>
         </form>
-        
+
         <!-- Success message area -->
         <div class="text-center mt-12">
             <div class="inline-flex items-center bg-green-50 border border-green-200 rounded-2xl px-6 py-3 text-green-700">
@@ -384,22 +384,22 @@
     const uploadArea = document.getElementById('photo-upload-area');
     const uploadContent = document.getElementById('upload-content');
     const preview = document.getElementById('photos-preview');
-    
+
     // Drag and drop functionality
     uploadArea.addEventListener('dragover', function(e) {
         e.preventDefault();
         uploadArea.classList.add('border-primary-500', 'bg-primary-100');
     });
-    
+
     uploadArea.addEventListener('dragleave', function(e) {
         e.preventDefault();
         uploadArea.classList.remove('border-primary-500', 'bg-primary-100');
     });
-    
+
     uploadArea.addEventListener('drop', function(e) {
         e.preventDefault();
         uploadArea.classList.remove('border-primary-500', 'bg-primary-100');
-        
+
         const files = e.dataTransfer.files;
         const dt = new DataTransfer();
         for (let i = 0; i < files.length; i++) {
@@ -408,20 +408,20 @@
         photoInput.files = dt.files;
         handlePhotoPreview(files);
     });
-    
+
     photoInput.addEventListener('change', function(e) {
         console.log('Files selected:', e.target.files.length);
         handlePhotoPreview(e.target.files);
     });
-    
+
     function handlePhotoPreview(files) {
         console.log('Handling photo preview for', files.length, 'files');
         preview.innerHTML = '';
-        
+
         if (files.length > 0) {
             uploadContent.classList.add('hidden');
             preview.classList.remove('hidden');
-            
+
             // Show file names for debugging
             const fileList = document.createElement('div');
             fileList.className = 'mb-4 text-sm text-gray-600';
@@ -430,7 +430,7 @@
                 fileList.innerHTML += `${index + 1}. ${file.name} (${(file.size / 1024).toFixed(1)}KB)<br>`;
             });
             preview.appendChild(fileList);
-            
+
             Array.from(files).slice(0, 5).forEach((file, index) => {
                 console.log('Processing file', index + 1, ':', file.name, file.size, 'bytes');
                 const reader = new FileReader();
@@ -447,7 +447,7 @@
                 }
                 reader.readAsDataURL(file);
             });
-            
+
             if (files.length >= 5) {
                 const maxMessage = document.createElement('div');
                 maxMessage.className = 'col-span-full text-center text-sm text-gray-500 mt-2';
@@ -459,13 +459,13 @@
             preview.classList.add('hidden');
         }
     }
-    
 
-    
+
+
     // Enhanced phone mask
     document.getElementById('contact_phone').addEventListener('input', function(e) {
         let value = e.target.value.replace(/\D/g, '');
-        
+
         if (value.length <= 11) {
             value = value.replace(/(\d{2})(\d)/, '($1) $2');
             value = value.replace(/(\d{5})(\d)/, '$1-$2');
@@ -474,45 +474,45 @@
             value = value.replace(/(\d{2})(\d)/, '($1) $2');
             value = value.replace(/(\d{5})(\d)/, '$1-$2');
         }
-        
+
         e.target.value = value;
     });
-    
+
     // Character counter for description
     const descriptionTextarea = document.getElementById('description');
     const charCount = document.getElementById('char-count');
-    
+
     descriptionTextarea.addEventListener('input', function() {
         const count = this.value.length;
         charCount.textContent = `${count}/500`;
-        
+
         if (count > 400) {
             charCount.classList.add('text-red-500');
         } else {
             charCount.classList.remove('text-red-500');
         }
-        
+
         if (count >= 500) {
             this.value = this.value.substring(0, 500);
             charCount.textContent = '500/500';
         }
     });
-    
+
     // Form validation and progress
     const form = document.getElementById('pet-form');
     const submitBtn = document.getElementById('submit-btn');
-    
+
     form.addEventListener('submit', function(e) {
         console.log('Form submitted with', photoInput.files.length, 'photos');
-        
+
         // Show loading state
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i>Cadastrando...';
         submitBtn.disabled = true;
-        
+
         // Basic validation
         const requiredFields = form.querySelectorAll('[required]');
         let isValid = true;
-        
+
         requiredFields.forEach(field => {
             if (!field.value.trim()) {
                 isValid = false;
@@ -521,33 +521,33 @@
                 field.classList.remove('border-red-500');
             }
         });
-        
+
         if (!isValid) {
             e.preventDefault();
             submitBtn.innerHTML = '<i class="fas fa-heart mr-3"></i>Cadastrar Pet';
             submitBtn.disabled = false;
-            
+
             // Show error message
             alert('Por favor, preencha todos os campos obrigatórios.');
         }
     });
-    
+
     // Auto-save draft (localStorage)
     const formInputs = form.querySelectorAll('input, select, textarea');
-    
+
     formInputs.forEach(input => {
         // Load saved data
         const savedValue = localStorage.getItem(`pet_form_${input.name}`);
         if (savedValue && !input.value) {
             input.value = savedValue;
         }
-        
+
         // Save on change
         input.addEventListener('change', function() {
             localStorage.setItem(`pet_form_${this.name}`, this.value);
         });
     });
-    
+
     // Clear draft on successful submit
     form.addEventListener('submit', function() {
         setTimeout(() => {

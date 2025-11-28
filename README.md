@@ -29,20 +29,20 @@ Turma **3B2**
 | 2  | Upload múltiplo de fotos de pets | ✅ |
 | 3  | Geolocalização automática via IP | ✅ |
 | 4  | Busca avançada de pets | ✅ |
-| 5  | Painel administrativo | ✅ |
+| 5  | Dashboard moderno | ✅ |
 | 6  | Perfis de usuário | ✅ |
 | 7  | Sistema de contato (e-mail/WhatsApp) | ✅ |
-| 8  | Galeria navegável por teclado | ✅ |
+| 8  | Alterar informações do usuario e do pet | ✅ |
 | 9  | Validação robusta de dados | ✅ |
 | 10 | Proteção CSRF | ✅ |
 | 11 | Sanitização de uploads de imagem | ✅ |
 | 12 | Controle de acesso baseado em roles | ✅ |
 | 13 | Conformidade com a LGPD | ✅ |
-| 14 | Formulário multi-step com indicador de progresso | ✅ |
+| 14 | Formulario requer consentimento com termos de uso | ✅ |
 | 15 | Upload via drag-and-drop | ✅ |
 | 16 | Validação em tempo real | ✅ |
 | 17 | Salvamento automático no localStorage | ✅ |
-| 18 | Estatísticas animadas na homepage | ✅ |
+| 18 | Autopreencher localização nos formularios | ✅ |
 | 19 | Cards modernos na homepage | ✅ |
 | 20 | Página de detalhes do pet | ✅ |
 
