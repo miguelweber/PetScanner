@@ -21,20 +21,6 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('register
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Admin Routes
-Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::get('/', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/pets', [App\Http\Controllers\AdminController::class, 'pets'])->name('admin.pets');
-    Route::patch('/pets/{pet}/toggle', [App\Http\Controllers\AdminController::class, 'togglePet'])->name('admin.pets.toggle');
-    Route::delete('/pets/{pet}', [App\Http\Controllers\AdminController::class, 'deletePet'])->name('admin.pets.delete');
-});
-
-// Chat Routes
-Route::prefix('chat')->middleware('auth')->group(function () {
-    Route::get('/', [App\Http\Controllers\ChatController::class, 'index'])->name('chat.index');
-    Route::get('/{pet}/{user}', [App\Http\Controllers\ChatController::class, 'show'])->name('chat.show');
-    Route::post('/{pet}', [App\Http\Controllers\ChatController::class, 'store'])->name('chat.store');
-});
 
 // Storage route for images
 Route::get('/storage/{path}', function ($path) {

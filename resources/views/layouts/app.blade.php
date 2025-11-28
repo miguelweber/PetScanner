@@ -326,31 +326,8 @@
                         A plataforma que conecta pets que precisam de um lar com pessoas que querem adotar.
                         Juntos, fazemos a diferença na vida dos animais.
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-2xl flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-facebook-f text-lg"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-2xl flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-instagram text-lg"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-2xl flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-twitter text-lg"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-2xl flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-whatsapp text-lg"></i>
-                        </a>
-                    </div>
                 </div>
 
-                <div>
-                    <h3 class="text-xl font-semibold mb-6 text-white">Links Úteis</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Como Adotar</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Como Anunciar</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Dicas de Cuidados</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Contato</a></li>
-                    </ul>
-                </div>
 
                 <div>
                     <h3 class="text-xl font-semibold mb-6 text-white">Legal</h3>

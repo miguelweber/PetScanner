@@ -184,34 +184,6 @@
             </button>
         </form>
         
-        <!-- Enhanced Social Login -->
-        <div class="space-y-6">
-            <div class="relative">
-                <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-200"></div>
-                </div>
-                <div class="relative flex justify-center">
-                    <span class="px-6 bg-white text-gray-500 font-medium">Ou cadastre-se com</span>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <button class="card p-4 hover:bg-red-50 hover:border-red-200 transition-all duration-300 group">
-                    <div class="flex items-center justify-center space-x-3">
-                        <i class="fab fa-google text-red-500 text-xl group-hover:scale-110 transition-transform"></i>
-                        <span class="font-medium text-gray-700">Google</span>
-                    </div>
-                </button>
-
-                <button class="card p-4 hover:bg-blue-50 hover:border-blue-200 transition-all duration-300 group">
-                    <div class="flex items-center justify-center space-x-3">
-                        <i class="fab fa-facebook-f text-blue-600 text-xl group-hover:scale-110 transition-transform"></i>
-                        <span class="font-medium text-gray-700">Facebook</span>
-                    </div>
-                </button>
-            </div>
-        </div>
-        
         <!-- Benefits section -->
         <div class="card p-6 bg-gradient-to-r from-accent-50 to-primary-50 border-accent-200">
             <h3 class="text-lg font-semibold text-gray-800 mb-4 text-center">Por que se cadastrar?</h3>

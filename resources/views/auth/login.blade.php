@@ -83,10 +83,6 @@
                            class="h-5 w-5 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
                     <span class="ml-3 text-gray-700 font-medium">Lembrar de mim</span>
                 </label>
-
-                <a href="#" class="font-semibold text-primary-600 hover:text-primary-700 transition-colors">
-                    Esqueceu sua senha?
-                </a>
             </div>
 
             <button type="submit" id="login-btn"
@@ -97,34 +93,6 @@
                 </span>
             </button>
         </form>
-        
-        <!-- Enhanced Social Login -->
-        <div class="space-y-6">
-            <div class="relative">
-                <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-200"></div>
-                </div>
-                <div class="relative flex justify-center">
-                    <span class="px-6 bg-white text-gray-500 font-medium">Ou continue com</span>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <button class="card p-4 hover:bg-red-50 hover:border-red-200 transition-all duration-300 group">
-                    <div class="flex items-center justify-center space-x-3">
-                        <i class="fab fa-google text-red-500 text-xl group-hover:scale-110 transition-transform"></i>
-                        <span class="font-medium text-gray-700">Google</span>
-                    </div>
-                </button>
-
-                <button class="card p-4 hover:bg-blue-50 hover:border-blue-200 transition-all duration-300 group">
-                    <div class="flex items-center justify-center space-x-3">
-                        <i class="fab fa-facebook-f text-blue-600 text-xl group-hover:scale-110 transition-transform"></i>
-                        <span class="font-medium text-gray-700">Facebook</span>
-                    </div>
-                </button>
-            </div>
-        </div>
         
         <!-- Additional info -->
         <div class="text-center">

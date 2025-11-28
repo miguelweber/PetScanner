@@ -103,10 +103,6 @@
                     <i class="fas fa-user-plus mr-3"></i>Criar Conta Grátis
                 </a>
             @endauth
-
-            <button onclick="scrollToStats()" class="btn-secondary text-lg px-8 py-4">
-                <i class="fas fa-chart-bar mr-3"></i>Ver Estatísticas
-            </button>
         </div>
     </div>
 
